@@ -57,7 +57,7 @@ class EquationSolver
         x2 = (-@b - Math.sqrt(discriminant))/(2*@a)
         [x1, x2]
       else discriminant == 0
-        (-@b)/(2*@a)
+        (-@b)/(2 * @a)
       end
     end
 
