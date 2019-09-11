@@ -16,13 +16,21 @@ class EquationSolver
   private
 
   def validate_params
+    if @equation['type'] == 'linear' && !@equation['c_param'].nil? 
+      raise ArgumentError, "Wrong number of params for linear type"
+    end
+
+    if (@equation['type'] == 'quadratic' && ![@equation['c_param'], @equation['c_param'], @equation['c_param']].all?)
+      raise ArgumentError, "Wrong number of params for quadratic type"
+    end
+
     raise ArgumentError, "A param must be not equal to zero" if @equation['a_param'] == 0
     
     params = ['b', 'a']
     params << 'c' if @equation['type'] == 'quadratic'
 
     params.each do |letter| 
-      raise "Invalid #{letter}_param" unless @equation["#{letter}_param"].is_a? Numeric
+      raise ArgumentError, "Invalid #{letter}_param" unless @equation["#{letter}_param"].is_a? Numeric
     end
   end
 
