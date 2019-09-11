@@ -16,7 +16,7 @@ class EquationSolver
   private
 
   def validate_params
-    raise ArgumentError, "A param must be not equal to zero" if @equation['a_param'].to_f == 0
+    raise ArgumentError, "A param must be not equal to zero" if @equation['a_param'] == 0
     
     ['a', 'b', 'c'].each do |letter| 
       raise "Invalid #{letter}_param" unless @equation["#{letter}_param"].is_a? Float
@@ -24,7 +24,7 @@ class EquationSolver
   end
 
   def solve_linear_equation
-    -@equation['b_param'].to_f / @equation['a_param'].to_f
+    -@equation['b_param'] / @equation['a_param']
   end
 
   def solve_quadratic_equation
@@ -33,9 +33,9 @@ class EquationSolver
 
   class QuadraticEquationSolver
     def initialize(a, b, c)
-      @a = a.to_f
-      @b = b.to_f
-      @c = c.to_f
+      @a = a
+      @b = b
+      @c = c
     end
 
     def solve
