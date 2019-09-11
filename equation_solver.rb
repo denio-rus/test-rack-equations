@@ -18,8 +18,11 @@ class EquationSolver
   def validate_params
     raise ArgumentError, "A param must be not equal to zero" if @equation['a_param'] == 0
     
-    ['a', 'b', 'c'].each do |letter| 
-      raise "Invalid #{letter}_param" unless @equation["#{letter}_param"].is_a? Float
+    params = ['b', 'a']
+    params << 'c' if @equation['type'] == 'quadratic'
+
+    params.each do |letter| 
+      raise "Invalid #{letter}_param" unless @equation["#{letter}_param"].is_a? Numeric
     end
   end
 
