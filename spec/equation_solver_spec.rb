@@ -13,19 +13,19 @@ RSpec.describe EquationSolver do
   let(:lin_equation_missed_a_param) { {  'b_param' => -12, 'type' => 'linear' } }
 
   it 'returns an array of roots if Discriminant is positive' do
- 	  expect(EquationSolver.new(quad_equation_pos_discr).solve).to eq([6.0, 2.0])
+    expect(EquationSolver.new(quad_equation_pos_discr).solve).to eq([6.0, 2.0])
   end
 
   it "returns string 'No roots' if Discriminant is negative" do
- 	  expect(EquationSolver.new(quad_equation_neg_discr).solve).to eq('No roots')
+    expect(EquationSolver.new(quad_equation_neg_discr).solve).to eq('No roots')
   end
 
   it "returns number if Discriminant is equal to zero" do
- 	  expect(EquationSolver.new(quad_equation_zero_discr).solve).to eq(3.0)
+    expect(EquationSolver.new(quad_equation_zero_discr).solve).to eq(3.0)
   end
 
   it "returns root if given two number arguments" do
- 	  expect(EquationSolver.new(lin_equation).solve).to eq(6)
+    expect(EquationSolver.new(lin_equation).solve).to eq(6)
   end
 
   it 'raises exeption if wrong param given' do
